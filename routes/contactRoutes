@@ -1,0 +1,17 @@
+const express = require("express");
+const router = express.Router(); // here we are creating an object using the function from the express.router function 
+const { getContacts, createContacts, getContact, deleteContact, updateContacts } = require("../controllers/contactControllers")//it mean all the variable get their value from the contact controller
+
+
+
+router.route("/").get(getContacts).post(createContacts);//this is the way be which when the https request has the / then one of the two function would be called based on the command
+//he aboove is the chaining method where the multiple request have same end point that is here /
+
+router.route("/:id").get(getContact).put(updateContacts).delete(deleteContact);//this tells when the url have the id then based on the thing the user want one of the above thing would be issued by the server
+//the same the abpve one is the chained routing where the multilple request have same end points
+
+
+
+
+
+module.exports = router;
